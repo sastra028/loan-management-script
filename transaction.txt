@@ -1,0 +1,20 @@
+CREATE TABLE `transaction` (
+  `transaction_no` char(50) NOT NULL,
+  `account_no` char(50)  references account(account_no),
+  `title` char(50) DEFAULT NULL,
+  `first_name_thai` char(200) DEFAULT NULL,
+  `last_name_thai` char(200) DEFAULT NULL,
+  `citizen_id` char(15) DEFAULT NULL,
+  `loan_date` date DEFAULT NULL,
+  `refund_date` date DEFAULT NULL,
+  `loan_amount` decimal(10,0) DEFAULT NULL,
+  `status` char(50) DEFAULT NULL,
+  `note` longtext,
+  `update_date` date DEFAULT NULL,
+  `update_by` char(100) DEFAULT NULL,
+  `create_date` date DEFAULT NULL,
+  `create_by` char(100) DEFAULT NULL,
+  PRIMARY KEY (`transaction_no`),
+  KEY `account_fk` (`account_no`),
+  CONSTRAINT `account_fk` FOREIGN KEY (`account_no`) REFERENCES `account` (`account_no`)
+)

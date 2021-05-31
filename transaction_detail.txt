@@ -1,0 +1,16 @@
+CREATE TABLE `transaction_detail` (
+  `transaction_detail_no` char(50) NOT NULL,
+  `transaction_no` char(50) references transaction(transaction_no),
+  `account_no` char(50) DEFAULT NULL,
+  `transaction_status` char(50) DEFAULT NULL,
+  `amount` decimal(10,0) DEFAULT NULL,
+  `principle` decimal(10,0) DEFAULT NULL,
+  `interest` decimal(10,0) DEFAULT NULL,
+  `fines` decimal(10,0) DEFAULT NULL,
+  `note` longtext,
+  `create_date` date DEFAULT NULL,
+  `create_by` char(100) DEFAULT NULL,
+  PRIMARY KEY (`transaction_detail_no`),
+  KEY `transaction_detail_FK` (`transaction_no`),
+  CONSTRAINT `transaction_detail_FK` FOREIGN KEY (`transaction_no`) REFERENCES `transaction` (`transaction_no`)
+)
